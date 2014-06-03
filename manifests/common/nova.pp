@@ -21,6 +21,7 @@ class havana::common::nova ($is_compute = false) {
     rabbit_password    => hiera('openstack::rabbitmq::password'),
     debug              => hiera('openstack::debug'),
     verbose            => hiera('openstack::verbose'),
+    devmode            => hiera('openstack::devmode'),
   }
 
   nova_config { 'DEFAULT/default_floating_pool': value => 'public' }

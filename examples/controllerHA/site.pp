@@ -3,9 +3,11 @@ node 'puppet' {
 }
 
 node 'controller01' {
+  include havana::resources::haproxy
 }
 
 node 'controller02' {
+  include havana::resources::haproxy
 }
 
 node 'database' {

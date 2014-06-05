@@ -6,9 +6,8 @@ class havana::role::controllerHA inherits ::havana::role {
   class { '::havana::profile::keystoneHA': } ->
   class { '::havana::profile::glanceHA::api': } ->
   class { '::havana::profile::glanceHA::auth': } ->
-  class { '::havana::profile::cinder::api': } ->
-  class { '::havana::profile::nova::api': } ->
-  class { '::havana::profile::cinder::volume': }
+  class { '::havana::profile::novaHA::api': } ->
+  class { '::havana::profile::novaHA::compute':}
 # nova-network here?
   class { '::havana::profile::horizon': }
   class { '::havana::profile::auth_file': }

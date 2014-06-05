@@ -22,8 +22,10 @@ openstack::network::neutron::private: '10.0.0.0/24'
 
 ######## Fixed IPs (controllers)
 
-openstack::controller::address::api: '192.168.11.4'
-openstack::controller::address::management: '172.16.33.4'
+# not used:
+#openstack::controller::address::api: '192.168.11.4'
+#openstack::controller::address::management: '172.16.33.4'
+
 openstack::storage::address::api: '192.168.11.5'
 openstack::storage::address::management: '172.16.33.5'
 

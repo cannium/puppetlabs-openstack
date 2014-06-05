@@ -4,6 +4,8 @@ openstack::region: 'openstack'
 openstack::controller::address::virtual: '192.168.56.110'
 openstack::controller::address::01: '192.168.56.102'
 openstack::controller::address::02: '192.168.56.103'
+openstack::storage::address::01: '192.168.56.102'
+openstack::storage::address::02: '192.168.56.103'
 
 ######## Networks
 openstack::network::api: '192.168.11.0/24'
@@ -25,9 +27,8 @@ openstack::network::neutron::private: '10.0.0.0/24'
 # not used:
 #openstack::controller::address::api: '192.168.11.4'
 #openstack::controller::address::management: '172.16.33.4'
-
-openstack::storage::address::api: '192.168.11.5'
-openstack::storage::address::management: '172.16.33.5'
+#openstack::storage::address::api: '192.168.11.5'
+#openstack::storage::address::management: '172.16.33.5'
 
 ######## Database
 
@@ -72,6 +73,9 @@ openstack::users:
 ######## Glance
 
 openstack::glance::password: 'na-mu-va'
+openstack::glance::filesystem_store_datadir: '/openstack/glance/images'
+openstack::glance::scrubber_datadir: '/openstack/glance/scrubber'
+openstack::glance::image_cache_dir: '/openstack/glance/image-cache'
 
 ######## Cinder
 

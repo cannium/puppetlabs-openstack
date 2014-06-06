@@ -7,8 +7,7 @@ class havana::role::controllerHA inherits ::havana::role {
   class { '::havana::profile::glanceHA::auth': } ->
   class { '::havana::profile::novaHA::api': } ->
   class { '::havana::profile::novaHA::compute':}
-# nova-network here?
-  class { '::havana::profile::horizon': }
+  class { '::havana::profile::horizonHA': }
   class { '::havana::profile::auth_file': }
   class { '::havana::setup::cirros': }
 }

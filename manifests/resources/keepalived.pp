@@ -1,5 +1,5 @@
 class havana::resources::keepalived{
-  class{'keepalived':}
+  class{'::keepalived':}
   keepalived::vrrp::script {'haproxy-check':
     script      => 'killall -0 haproxy',
     interval    => '2',

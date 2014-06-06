@@ -5,15 +5,15 @@ node 'puppet' {
 node 'controller01' {
   include havana::resources::haproxy
   include havana::resources::keepalived
-  include havana::role::controllerHA
+  include havana::roleHA::controller
 }
 
 node 'controller02' {
   include havana::resources::haproxy
   include havana::resources::keepalived
-  include havana::role::controllerHA
+  include havana::roleHA::controller
 }
 
 node 'database' {
-  include havana::role::database
+  include havana::roleHA::database
 }

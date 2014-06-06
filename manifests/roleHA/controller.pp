@@ -1,4 +1,4 @@
-class havana::role::controllerHA inherits ::havana::roleHA {
+class havana::roleHA::controller inherits ::havana::roleHA {
   class { '::havana::profile::firewall': }
   class { '::havana::profile::rabbitmqHA': } ->
   class { '::havana::profile::memcacheHA': } ->

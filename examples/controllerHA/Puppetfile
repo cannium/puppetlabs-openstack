@@ -138,3 +138,7 @@ mod "haproxy",
 mod "keepalived",
   :git => "git://github.com/arioch/puppet-keepalived",
   :ref => "0.0.13"
+
+mod "sysctl",
+  :git => "git://github.com/thias/puppet-sysctl",
+  :ref => "0.3.1"

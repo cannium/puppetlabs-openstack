@@ -1,5 +1,10 @@
 class havana::resources::haproxy{
   $vip = hiera('openstack::controller::address::virtual')
+
+  ::sysctl {'net.ipv4.ip_forward': value => '1'} ->
+  ::sysctl {'net.ipv4.ip_nonlocal_bind': value => '1'} ->
+  ::sysctl {'net.ipv4.conf.all.rp_filter': value => '0'} ->
+  ::sysctl {'net.ipv4.conf.default.rp_filter': value => '0'} -> 
   class { '::haproxy':
     global_options   => {
       'daemon'  => '',  # means add "daemon" in global section

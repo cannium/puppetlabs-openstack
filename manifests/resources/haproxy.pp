@@ -1,7 +1,6 @@
 class havana::resources::haproxy{
   $vip = hiera('openstack::controller::address::virtual')
   class { '::haproxy':
-    enable => true,
     global_options   => {
       'daemon'  => '',  # means add "daemon" in global section
     },

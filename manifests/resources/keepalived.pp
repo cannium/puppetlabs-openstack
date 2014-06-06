@@ -15,7 +15,7 @@ class havana::resources::keepalived{
   keepalived::vrrp::instance {'openstack-vip':
     state               => $instance_state,
     priority            => '102',
-    interface           => 'eth0',
+    interface           => hiera('keepalived::vrrp::interface'),
     virtual_router_id   => '80',
     advert_int          =>  '3',
     virtual_ipaddress   => $vip,

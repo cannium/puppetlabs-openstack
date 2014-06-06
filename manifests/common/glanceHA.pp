@@ -4,13 +4,8 @@
 # set so that services like Tempest can access credentials
 # on the controller
 class havana::common::glanceHA {
-    if($::hostname == 'controller01') {
-        $auth_address = hiera('openstack::controller::address::01')
-        $registry_address = hiera('openstack::storage::address::01')
-    } else {
-        $auth_address = hiera('openstack::controller::address::02')
-        $registry_address = hiera('openstack::storage::address::02)
-    }
+  $auth_address = $::havana::profile::baseHA::controller_management_address
+  $registry_address = $::havana::profile::baseHA::storage_management_address
   class { '::glance::api':
     keystone_password => hiera('openstack::glance::password'),
     auth_host         => $auth_address,

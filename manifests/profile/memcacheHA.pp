@@ -1,10 +1,6 @@
 # The profile to install a local instance of memcache
 class havana::profile::memcacheHA {
-  if($::hostname == 'controller01') {
-      $address = hiera('openstack::controller::address::01')
-  } else {
-      $address = hiera('openstack::controller::address::02')
-  }
+  $address = $::havana::profile::baseHA::controller_management_address
   class { 'memcached':
     listen_ip => $address, #'127.0.0.1',
     tcp_port  => '11211',

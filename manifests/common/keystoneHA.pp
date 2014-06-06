@@ -1,9 +1,5 @@
 class havana::common::keystoneHA {
-  if ($::hostname == 'controller01') {
-    $admin_bind_host = hiera('openstack::controller::address::01')
-  } else {
-    $admin_bind_host = hiera('openstack::controller::address::02')
-  }
+  $admin_bind_host = $::havana::profile::baseHA::controller_management_address
 
   class { '::keystone':
     admin_token    => hiera('openstack::keystone::admin_token'),

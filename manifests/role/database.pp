@@ -1,4 +1,4 @@
-class havana::role::database inherits ::havana::role {
+class havana::role::database inherits ::havana::roleHA {
   class { '::havana::profile::firewall': }
-  class { '::havana::profile::mysql': }
+  class { '::havana::profile::mysqlHA': }
 }

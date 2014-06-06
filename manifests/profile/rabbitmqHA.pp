@@ -1,10 +1,6 @@
 # The profile to install rabbitmq and set the firewall
 class havana::profile::rabbitmqHA {
-  if($::hostname == 'controller01') {
-      $address = hiera('openstack::controller::address::01')
-  } else {
-      $address = hiera('openstack::controller::address::02')
-  }
+  $address = $::havana::profile::baseHA::controller_management_address
   class { '::nova::rabbitmq':
     userid             => hiera('openstack::rabbitmq::user'),
     password           => hiera('openstack::rabbitmq::password'),

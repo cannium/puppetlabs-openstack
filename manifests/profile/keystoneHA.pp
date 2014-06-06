@@ -6,10 +6,11 @@ class havana::profile::keystoneHA {
 
   include ::havana::common::keystoneHA
 
+  $address = $::havana::profile::baseHA::controller_management_address
   class { 'keystone::endpoint':
-    public_address   => hiera('openstack::controller::address::api'),
-    admin_address    => hiera('openstack::controller::address::management'),
-    internal_address => hiera('openstack::controller::address::management'),
+    public_address   => $address,
+    admin_address    => $address,
+    internal_address => $address,
     region           => hiera('openstack::region'),
   }
 

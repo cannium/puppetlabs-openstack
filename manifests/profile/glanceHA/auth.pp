@@ -4,11 +4,7 @@ class havana::profile::glanceHA::auth {
   ::havana::resources::controllerHA { 'glance': }
   ::havana::resources::database { 'glance': }
 
-  if($::hostname == 'controller01') {
-      $address = hiera('openstack::storage::address::01')
-  } else {
-      $address = hiera('openstack::storage::address::02')
-  }
+  $address = $::havana::profile::baseHA::controller_management_address
   class  { '::glance::keystone::auth':
     password         => hiera('openstack::glance::password'),
     public_address   => $address,

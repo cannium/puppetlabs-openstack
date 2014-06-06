@@ -1,12 +1,7 @@
 # The puppet module to set up a Nova Compute node
 class havana::profile::novaHA::compute {
 
-  if($::hostname == 'controller01') {
-      $management_network = hiera('openstack::network::address::01')
-  } else {
-      $management_network = hiera('openstack::network::address::02')
-  }
-  $management_address = ip_for_network($management_network)
+  $management_address = $::havana::profile::baseHA::controller_management_address
 
   class { '::havana::common::novaHA':
     is_compute => true,

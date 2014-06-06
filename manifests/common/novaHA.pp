@@ -11,15 +11,9 @@ class havana::common::novaHA (
   $management_network = hiera('openstack::network::management')
   $management_address = ip_for_network($management_network)
 
-  if($::hostname == 'controller01') {
-      $storage_management_address = hiera('openstack::storage::address::01')
-      $controller_management_address = hiera('openstack::controller::address::01')
-      $other_node_address = hiera('openstack::controller::address::02')
-  } else {
-      $storage_management_address = hiera('openstack::storage::address::02')
-      $controller_management_address = hiera('openstack::controller::address::02')
-      $other_node_address = hiera('openstack::controller::address::01')
-  }
+  $storage_management_address = $::havana::profile::baseHA::storage_management_address
+  $controller_management_address = $::havana::profile::baseHA::controller_management_address
+  $other_node_address = $$::havana::profile::baseHA::other_node_address
   $vip = hiera('openstack::controller::address::virtual')
 
   class { '::nova':

@@ -8,14 +8,8 @@ class havana::profile::glanceHA::api {
   $management_network = hiera('openstack::network::management')
   $management_address = ip_for_network($management_network)
 
-  if($::hostname == 'controller01') {
-      $explicit_address = hiera('openstack::storage::address::01')
-      $controller_address = hiera('openstack::controller::address::01')
-  } else {
-      $explicit_address = hiera('openstack::storage::address::02')
-      $controller_address = hiera('openstack::controller::address::02')
-  }
-
+  $explicit_address = $::havana::profile::baseHA::storage_management_address
+  $controller_address = $::havana::profile::baseHA::controller_management_addres
 
   if $management_address != $explicit_address {
     fail("Glance Auth setup failed. The inferred location of Glance from

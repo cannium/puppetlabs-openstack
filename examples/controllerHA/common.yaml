@@ -12,8 +12,8 @@ keepalived::vrrp::interface: 'eth1'
 ######## Networks
 openstack::network::api: '192.168.56.0/24'
 openstack::network::external: '192.168.56.0/24'
-openstack::network::management: '172.16.56.0/24'
-openstack::network::data: '172.16.56.0/24'
+openstack::network::management: '192.168.56.0/24'
+openstack::network::data: '192.168.56.0/24'
 
 openstack::network::external::ippool::start: 192.168.56.150
 openstack::network::external::ippool::end: 192.168.56.250
@@ -36,7 +36,7 @@ openstack::network::external::dns: 192.168.56.1
 
 openstack::mysql::root_password: 'spam-gak'
 openstack::mysql::service_password: 'fuva-wax'
-openstack::mysql::allowed_hosts: ['localhost', '127.0.0.1', '172.16.33.%']
+openstack::mysql::allowed_hosts: ['localhost', '127.0.0.1', '192.168.56.%']
 openstack::mysql::bind_address: '192.168.56.104'
 
 ######## RabbitMQ

@@ -3,7 +3,7 @@
 # usage: include from controller, declare from worker
 # This is to handle dependency
 # depends on openstack::profile::base having been added to a node
-class havana::common::novaHA (
+class havana::common::novaha (
         $is_compute = false,
         $is_controller = true,
   ) {
@@ -11,13 +11,13 @@ class havana::common::novaHA (
   $management_network = hiera('openstack::network::management')
   $management_address = ip_for_network($management_network)
 
-  $storage_management_address = $::havana::profile::baseHA::storage_management_address
-  $controller_management_address = $::havana::profile::baseHA::controller_management_address
-  $other_node_address = $$::havana::profile::baseHA::other_node_address
+  $storage_management_address = $::havana::profile::baseha::storage_management_address
+  $controller_management_address = $::havana::profile::baseha::controller_management_address
+  $other_node_address = $$::havana::profile::baseha::other_node_address
   $vip = hiera('openstack::controller::address::virtual')
 
   class { '::nova':
-    sql_connection     => $::havana::resources::connectorsHA::nova,
+    sql_connection     => $::havana::resources::connectorsha::nova,
     glance_api_servers => "http://${vip}:9292",
     memcached_servers  => ["${controller_management_address}:11211",
                            "${other_node_address}:11211"],

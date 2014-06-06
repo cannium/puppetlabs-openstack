@@ -3,17 +3,17 @@ node 'puppet' {
 }
 
 node 'controller01' {
-  include havana::resources::haproxy
-  include havana::resources::keepalived
-  include havana::roleHA::controller
+  include ::havana::resources::haproxy
+  include ::havana::resources::keepalived
+  include ::havana::roleha::controller
 }
 
 node 'controller02' {
-  include havana::resources::haproxy
-  include havana::resources::keepalived
-  include havana::roleHA::controller
+  include ::havana::resources::haproxy
+  include ::havana::resources::keepalived
+  include ::havana::roleha::controller
 }
 
 node 'database' {
-  include havana::roleHA::database
+  include ::havana::roleha::database
 }

@@ -1,12 +1,12 @@
 # The profile to install the Keystone service
-class havana::profile::keystoneHA {
-  ::havana::resources::controllerHA { 'keystone': }
+class havana::profile::keystoneha {
+  ::havana::resources::controllerha { 'keystone': }
   ::havana::resources::database { 'keystone': }
   ::havana::resources::firewall { 'Keystone API': port => '5000', }
 
-  include ::havana::common::keystoneHA
+  include ::havana::common::keystoneha
 
-  $address = $::havana::profile::baseHA::controller_management_address
+  $address = $::havana::profile::baseha::controller_management_address
   class { 'keystone::endpoint':
     public_address   => $address,
     admin_address    => $address,

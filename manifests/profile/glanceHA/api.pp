@@ -1,15 +1,15 @@
 # The profile to install the Glance API and Registry services
 # Note that for this configuration API controls the storage,
 # so it is on the storage node instead of the control node
-class havana::profile::glanceHA::api {
+class havana::profile::glanceha::api {
   $api_network = hiera('openstack::network::api')
   $api_address = ip_for_network($api_network)
 
   $management_network = hiera('openstack::network::management')
   $management_address = ip_for_network($management_network)
 
-  $explicit_address = $::havana::profile::baseHA::storage_management_address
-  $controller_address = $::havana::profile::baseHA::controller_management_addres
+  $explicit_address = $::havana::profile::baseha::storage_management_address
+  $controller_address = $::havana::profile::baseha::controller_management_addres
 
   if $management_address != $explicit_address {
     fail("Glance Auth setup failed. The inferred location of Glance from
@@ -22,7 +22,7 @@ class havana::profile::glanceHA::api {
   ::havana::resources::firewall { 'Glance API': port      => '9292', }
   ::havana::resources::firewall { 'Glance Registry': port => '9191', }
 
-  include ::havana::common::glanceHA
+  include ::havana::common::glanceha
 
   class { '::glance::backend::file': 
       filesystem_store_datadir  => hiera('openstack::glance::filesystem_store_datadir'),
@@ -32,7 +32,7 @@ class havana::profile::glanceHA::api {
 
   class { '::glance::registry':
     keystone_password => hiera('openstack::glance::password'),
-    sql_connection    => $::havana::resources::connectorsHA::glance,
+    sql_connection    => $::havana::resources::connectorsha::glance,
     auth_host         => $::hostname,
     keystone_tenant   => 'services',
     keystone_user     => 'glance',

@@ -1,13 +1,13 @@
-class havana::roleHA::controller inherits ::havana::roleHA {
+class havana::roleha::controller inherits ::havana::roleha {
   class { '::havana::profile::firewall': }
-  class { '::havana::profile::rabbitmqHA': } ->
-  class { '::havana::profile::memcacheHA': } ->
-  class { '::havana::profile::keystoneHA': } ->
-  class { '::havana::profile::glanceHA::api': } ->
-  class { '::havana::profile::glanceHA::auth': } ->
-  class { '::havana::profile::novaHA::api': } ->
-  class { '::havana::profile::novaHA::compute':}
-  class { '::havana::profile::horizonHA': }
-  class { '::havana::profile::auth_fileHA': }
+  class { '::havana::profile::rabbitmqha': } ->
+  class { '::havana::profile::memcacheha': } ->
+  class { '::havana::profile::keystoneha': } ->
+  class { '::havana::profile::glanceha::api': } ->
+  class { '::havana::profile::glanceha::auth': } ->
+  class { '::havana::profile::novaha::api': } ->
+  class { '::havana::profile::novaha::compute':}
+  class { '::havana::profile::horizonha': }
+  class { '::havana::profile::auth_fileha': }
   class { '::havana::setup::cirros': }
 }

@@ -1,6 +1,6 @@
 # Profile to install the horizon web service
-class havana::profile::horizonHA {
-  $address = $::havana::profile::baseHA::controller_management_address
+class havana::profile::horizonha {
+  $address = $::havana::profile::baseha::controller_management_address
   class { '::horizon':
     fqdn            => [ '127.0.0.1', $address, $::fqdn, '*' ],
     secret_key      => hiera('openstack::horizon::secret_key'),

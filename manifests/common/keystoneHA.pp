@@ -1,9 +1,9 @@
-class havana::common::keystoneHA {
-  $admin_bind_host = $::havana::profile::baseHA::controller_management_address
+class havana::common::keystoneha {
+  $admin_bind_host = $::havana::profile::baseha::controller_management_address
 
   class { '::keystone':
     admin_token    => hiera('openstack::keystone::admin_token'),
-    sql_connection => $::havana::resources::connectorsHA::keystone,
+    sql_connection => $::havana::resources::connectorsha::keystone,
     verbose        => hiera('openstack::verbose'),
     debug          => hiera('openstack::debug'),
     enabled        => true,

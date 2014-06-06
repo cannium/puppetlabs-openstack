@@ -1,5 +1,5 @@
 # The profile to install an OpenStack specific mysql server
-class havana::profile::mysqlHA {
+class havana::profile::mysqlha {
 
   class { 'mysql::server':
     config_hash       => {

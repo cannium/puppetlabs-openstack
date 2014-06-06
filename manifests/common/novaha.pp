@@ -63,7 +63,7 @@ class havana::common::novaha (
     vncproxy_host                 => $controller_management_address,
   }
 
-  class { '::nova::network::flastdhcp':
+  class { '::nova::network::flatdhcp':
     fixed_range             => '10.1.1.0/24',
     flat_interface          => 'eth1',
     public_interface        => 'eth0',

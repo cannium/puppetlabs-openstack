@@ -17,5 +17,7 @@ class havana::profile::novaha::api {
     region           => hiera('openstack::region'),
   }
 
-  include ::havana::common::novaha
+ # comment since compute and controller is the same machine in this
+ # controller-HA deployment
+ # include ::havana::common::novaha
 }

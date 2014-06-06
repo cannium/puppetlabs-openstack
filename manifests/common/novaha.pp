@@ -14,7 +14,7 @@ class havana::common::novaha (
   include havana::address
   $storage_management_address = $::havana::address::storage_management_address
   $controller_management_address = $::havana::address::controller_management_address
-  $other_node_address = $$::havana::address::other_node_address
+  $other_node_address = $::havana::address::other_node_address
   $vip = hiera('openstack::controller::address::virtual')
 
   class { '::nova':

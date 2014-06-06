@@ -7,7 +7,7 @@ class havana::common::keystoneHA {
 
   class { '::keystone':
     admin_token    => hiera('openstack::keystone::admin_token'),
-    sql_connection => $::havana::resources::connectors::keystone,
+    sql_connection => $::havana::resources::connectorsHA::keystone,
     verbose        => hiera('openstack::verbose'),
     debug          => hiera('openstack::debug'),
     enabled        => true,

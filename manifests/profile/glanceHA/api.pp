@@ -38,7 +38,7 @@ class havana::profile::glanceHA::api {
 
   class { '::glance::registry':
     keystone_password => hiera('openstack::glance::password'),
-    sql_connection    => $::havana::resources::connectors::glance,
+    sql_connection    => $::havana::resources::connectorsHA::glance,
     auth_host         => $::hostname,
     keystone_tenant   => 'services',
     keystone_user     => 'glance',

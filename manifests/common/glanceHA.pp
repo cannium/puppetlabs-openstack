@@ -16,7 +16,7 @@ class havana::common::glanceHA {
     auth_host         => $auth_address,
     keystone_tenant   => 'services',
     keystone_user     => 'glance',
-    sql_connection    => $::havana::resources::connectors::glance,
+    sql_connection    => $::havana::resources::connectorsHA::glance,
     registry_host     => $registry_address,
     verbose           => hiera('openstack::verbose'),
     debug             => hiera('openstack::debug'),

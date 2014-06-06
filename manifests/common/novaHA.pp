@@ -23,7 +23,7 @@ class havana::common::novaHA (
   $vip = hiera('openstack::controller::address::virtual')
 
   class { '::nova':
-    sql_connection     => $::havana::resources::connectors::nova,
+    sql_connection     => $::havana::resources::connectorsHA::nova,
     glance_api_servers => "http://${vip}:9292",
     memcached_servers  => ["${controller_management_address}:11211",
                            "${other_node_address}:11211"],

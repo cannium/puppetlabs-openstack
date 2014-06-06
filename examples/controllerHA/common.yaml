@@ -135,3 +135,6 @@ openstack::horizon::secret_key: 'whu-ghuk'
 ######## Log levels
 openstack::verbose: 'True'
 openstack::debug: 'True'
+
+######## sysctl
+sysctl::params::exec_path: '/usr/bin:/usr/sbin:/bin:/sbin'

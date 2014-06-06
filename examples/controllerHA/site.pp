@@ -15,6 +15,5 @@ node 'controller02' {
 }
 
 node 'database' {
-  include ::ntp
   include havana::role::database
 }

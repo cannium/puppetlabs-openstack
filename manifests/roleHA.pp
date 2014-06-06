@@ -1,3 +1,3 @@
-class havana::roleHA {
-  include ::havana::profile::baseHA
+class havana::roleha {
+  include ::havana::profile::baseha
 }

@@ -1,6 +1,6 @@
 class havana::resources::connectorsha {
-
-  $management_address = $::havana::profile::baseha::controller_management_address
+  include havana::address
+  $management_address = $::havana::address::controller_management_address
   $password = hiera('openstack::mysql::service_password')
 
   $keystone = "mysql://keystone:${password}@${management_address}/keystone"

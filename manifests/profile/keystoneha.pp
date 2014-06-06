@@ -6,7 +6,8 @@ class havana::profile::keystoneha {
 
   include ::havana::common::keystoneha
 
-  $address = $::havana::profile::baseha::controller_management_address
+  include havana::address
+  $address = $::havana::address::controller_management_address
   class { 'keystone::endpoint':
     public_address   => $address,
     admin_address    => $address,

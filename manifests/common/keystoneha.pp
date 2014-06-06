@@ -1,5 +1,6 @@
 class havana::common::keystoneha {
-  $admin_bind_host = $::havana::profile::baseha::controller_management_address
+  include havana::address
+  $admin_bind_host = $::havana::address::controller_management_address
 
   class { '::keystone':
     admin_token    => hiera('openstack::keystone::admin_token'),

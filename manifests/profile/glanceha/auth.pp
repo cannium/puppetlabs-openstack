@@ -4,7 +4,8 @@ class havana::profile::glanceha::auth {
   ::havana::resources::controllerha { 'glance': }
   ::havana::resources::database { 'glance': }
 
-  $address = $::havana::profile::baseha::controller_management_address
+  include havana::address
+  $address = $::havana::address::controller_management_address
   class  { '::glance::keystone::auth':
     password         => hiera('openstack::glance::password'),
     public_address   => $address,

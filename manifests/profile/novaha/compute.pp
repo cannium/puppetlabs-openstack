@@ -1,7 +1,8 @@
 # The puppet module to set up a Nova Compute node
 class havana::profile::novaha::compute {
 
-  $management_address = $::havana::profile::baseha::controller_management_address
+  include havana::address
+  $management_address = $::havana::address::controller_management_address
 
   class { '::havana::common::novaha':
     is_compute => true,

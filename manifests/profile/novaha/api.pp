@@ -7,7 +7,8 @@ class havana::profile::novaha::api {
   ::havana::resources::firewall { 'Nova EC2': port => '8773', }
   ::havana::resources::firewall { 'Nova S3': port => '3333', }
 
-  $address = $::havana::profile::baseha::controller_management_address
+  include havana::address
+  $address = $::havana::address::controller_management_address
   class { '::nova::keystone::auth':
     password         => hiera('openstack::nova::password'),
     public_address   => $address,

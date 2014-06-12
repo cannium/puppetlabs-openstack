@@ -38,6 +38,7 @@ openstack::mysql::root_password: 'spam-gak'
 openstack::mysql::service_password: 'fuva-wax'
 openstack::mysql::allowed_hosts: ['localhost', '127.0.0.1', '192.168.56.%']
 openstack::mysql::bind_address: '192.168.56.104'
+openstack::mysql::address: '192.168.56.104'
 
 ######## RabbitMQ
 

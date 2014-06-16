@@ -1,7 +1,6 @@
 # The profile to set up the Nova controller (several services)
 class havana::profile::novaha::api {
   ::havana::resources::controllerha { 'nova': }
-  ::havana::resources::database { 'nova': }
   ::havana::resources::firewall { 'Nova API': port => '8774', }
   ::havana::resources::firewall { 'Nova Metadata': port => '8775', }
   ::havana::resources::firewall { 'Nova EC2': port => '8773', }

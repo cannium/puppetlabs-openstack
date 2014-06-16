@@ -2,7 +2,6 @@
 # Because of the include, api must come before auth if colocated
 class havana::profile::glanceha::auth {
   ::havana::resources::controllerha { 'glance': }
-  ::havana::resources::database { 'glance': }
 
   include havana::address
   $address = $::havana::address::controller_management_address

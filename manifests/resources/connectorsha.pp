@@ -8,6 +8,4 @@ class havana::resources::connectorsha {
   $nova     = "mysql://nova:${password}@${database_address}/nova"
   $neutron  = "mysql://neutron:${password}@${database_address}/neutron"
   $heat     = "mysql://heat:${password}@${database_address}/heat"
-
-  include mysql::server
 }

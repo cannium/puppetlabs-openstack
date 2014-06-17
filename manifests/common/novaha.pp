@@ -36,6 +36,7 @@ class havana::common::novaha (
   class { '::nova::api':
     admin_password                       => hiera('openstack::nova::password'),
     api_bind_address                     => $controller_management_address,
+    metadata_listen                      => $controller_management_address,
     auth_host                            => $controller_management_address,
     enabled                              => $is_controller,
   }

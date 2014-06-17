@@ -18,5 +18,5 @@ class havana::profile::novaha::api {
 
  # comment since compute and controller is the same machine in this
  # controller-HA deployment
- # include ::havana::common::novaha
+ include ::havana::common::novaha
 }

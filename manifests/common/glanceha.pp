@@ -5,11 +5,12 @@
 # on the controller
 class havana::common::glanceha {
   include havana::address
-  $auth_address = $::havana::address::controller_management_address
+  $management_address = $::havana::address::controller_management_address
   $registry_address = $::havana::address::storage_management_address
   class { '::glance::api':
     keystone_password => hiera('openstack::glance::password'),
-    auth_host         => $auth_address,
+    auth_host         => $management_address,
+    bind_host         => $management_address,
     keystone_tenant   => 'services',
     keystone_user     => 'glance',
     sql_connection    => $::havana::resources::connectorsha::glance,

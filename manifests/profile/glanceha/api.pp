@@ -10,7 +10,7 @@ class havana::profile::glanceha::api {
 
   include havana::address
   $explicit_address = $::havana::address::storage_management_address
-  $controller_address = $::havana::address::controller_management_addres
+  $controller_address = $::havana::address::controller_management_address
 
   if $management_address != $explicit_address {
     fail("Glance Auth setup failed. The inferred location of Glance from

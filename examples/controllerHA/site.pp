@@ -3,15 +3,15 @@ node 'puppet' {
 }
 
 node 'controller01' {
-  include ::havana::resources::haproxy ->
-  include ::havana::resources::keepalived ->
-  include ::havana::roleha::controller
+  class{'::havana::resources::haproxy':} ->
+  class{'::havana::resources::keepalived':} ->
+  class{'::havana::roleha::controller':}
 }
 
 node 'controller02' {
-  include ::havana::resources::haproxy ->
-  include ::havana::resources::keepalived ->
-  include ::havana::roleha::controller
+  class{'::havana::resources::haproxy':} ->
+  class{'::havana::resources::keepalived':} ->
+  class{'::havana::roleha::controller':}
 }
 
 node 'database' {

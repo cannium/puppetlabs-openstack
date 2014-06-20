@@ -77,9 +77,9 @@ openstack::users:
 ######## Glance
 
 openstack::glance::password: 'na-mu-va'
-openstack::glance::filesystem_store_datadir: '/openstack/glance/images'
-openstack::glance::scrubber_datadir: '/openstack/glance/scrubber'
-openstack::glance::image_cache_dir: '/openstack/glance/image-cache'
+openstack::glance::filesystem_store_datadir: '/var/lib/glance/images'
+openstack::glance::scrubber_datadir: '/var/lib/glance/scrubber'
+openstack::glance::image_cache_dir: '/var/lib/glance/image-cache'
 
 ######## Cinder
 

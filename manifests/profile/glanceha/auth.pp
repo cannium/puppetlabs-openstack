@@ -13,5 +13,5 @@ class havana::profile::glanceha::auth {
     region           => hiera('openstack::region'),
   }
 
-  include ::havana::common::glanceha
+#  include ::havana::common::glanceha
 }

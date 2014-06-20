@@ -23,7 +23,7 @@ class havana::profile::glanceha::api {
   ::havana::resources::firewall { 'Glance API': port      => '9292', }
   ::havana::resources::firewall { 'Glance Registry': port => '9191', }
 
-#include ::havana::common::glanceha
+  include ::havana::common::glanceha
 
   class { '::glance::backend::file': 
       filesystem_store_datadir  => hiera('openstack::glance::filesystem_store_datadir'),

@@ -6,6 +6,7 @@ class havana::profile::novaha::compute {
 
   class { '::havana::common::novaha':
     is_compute => true,
+    is_controller => false,
   }
 
   class { '::nova::compute::libvirt':

@@ -64,10 +64,11 @@ class havana::common::novaha (
     vncproxy_host                 => $vip,
   }
 
-  class { '::nova::network::flatdhcp':
+  class { '::nova::network':
     fixed_range             => '10.1.1.0/24',
-    flat_interface          => 'eth1',
+    private_interface       => 'eth1',
     public_interface        => 'eth0',
-    flat_network_bridge     => 'br1',
+    enabled                 => true,
+    network_manager         => 'nova.network.manager.FlatDHCPManager',
   }
 }

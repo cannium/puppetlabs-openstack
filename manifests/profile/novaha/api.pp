@@ -7,7 +7,7 @@ class havana::profile::novaha::api {
   ::havana::resources::firewall { 'Nova S3': port => '3333', }
 
   include havana::address
-  $address = $::havana::address::controller_management_address
+  $address = hiera('openstack::controller::address::virtual')
   class { '::nova::keystone::auth':
     password         => hiera('openstack::nova::password'),
     public_address   => $address,
@@ -16,7 +16,8 @@ class havana::profile::novaha::api {
     region           => hiera('openstack::region'),
   }
 
- # comment since compute and controller is the same machine in this
- # controller-HA deployment
- include ::havana::common::novaha
+  class {'::havana::common::novaha':
+    is_compute => false,
+    is_controller => true,
+  }
 }

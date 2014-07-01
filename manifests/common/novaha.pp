@@ -61,7 +61,7 @@ class havana::common::novaha (
     enabled                       => $is_compute,
     vnc_enabled                   => true,
     vncserver_proxyclient_address => $management_address,
-    vncproxy_host                 => $controller_management_address,
+    vncproxy_host                 => $vip,
   }
 
   class { '::nova::network::flatdhcp':

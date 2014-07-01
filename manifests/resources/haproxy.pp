@@ -1,7 +1,6 @@
 class havana::resources::haproxy{
   $vip = hiera('openstack::controller::address::virtual')
 
-  sysctl::value {'net.ipv4.ip_forward': value => '1'} ->
   sysctl::value {'net.ipv4.ip_nonlocal_bind': value => '1'} ->
   sysctl::value {'net.ipv4.conf.all.rp_filter': value => '0'} ->
   sysctl::value {'net.ipv4.conf.default.rp_filter': value => '0'} -> 

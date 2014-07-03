@@ -13,7 +13,7 @@ class havana::address {
       $other_node_address = hiera('openstack::controller::address::01')
   } else {
       # compute node
-      $controller_management_address = hiera('openstack::controller:address::virtual')
+      $controller_management_address = hiera('openstack::controller::address::virtual')
       $storage_management_address = hiera('openstack::controller::address::virtual')
       $controller_api_address = hiera('openstack::controller::address:virtual')
       $storage_api_address = hiera('openstack::controller::address::virtual')

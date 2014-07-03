@@ -17,14 +17,22 @@ class havana::common::novaha (
   $other_node_address = $::havana::address::other_node_address
   $vip = hiera('openstack::controller::address::virtual')
 
+  if($other_node_address) {
+    $memcached = ["${controller_management_address}:11211",
+                  "${other_node_address}:11211"]
+    $rabbit = [$controller_management_address,
+               $other_node_address]
+  } else {
+    $memcached = ["${controller_management_address}:11211"]
+    $rabbit = [$controller_management_address]
+  }
+
   class { '::nova':
     sql_connection     => $::havana::resources::connectorsha::nova,
     glance_api_servers => "http://${vip}:9292",
-    memcached_servers  => ["${controller_management_address}:11211",
-                           "${other_node_address}:11211"],
+    memcached_servers  => $memcached,
     monitoring_notifications => true,
-    rabbit_hosts       => [$controller_management_address,
-                           $other_node_address],
+    rabbit_hosts       => $rabbit,
     rabbit_userid      => hiera('openstack::rabbitmq::user'),
     rabbit_password    => hiera('openstack::rabbitmq::password'),
     debug              => hiera('openstack::debug'),

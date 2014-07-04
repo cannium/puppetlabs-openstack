@@ -8,13 +8,15 @@ class havana::resources::keepalived{
 
   if ($::hostname == 'controller01') {
         $instance_state = 'MASTER'
+        $priority_value = 112
     } else {
         $instance_state = 'BACKUP'
+        $priority_value = 101
   }
   $vip = hiera('openstack::controller::address::virtual')
   keepalived::vrrp::instance {'openstack-vip':
     state               => $instance_state,
-    priority            => '102',
+    priority            => $priority_value,
     interface           => hiera('keepalived::vrrp::interface'),
     virtual_router_id   => '80',
     advert_int          =>  '3',

@@ -45,6 +45,12 @@ openstack::mysql::address: '192.168.56.104'
 openstack::rabbitmq::user: 'openstack'
 openstack::rabbitmq::password: 'pose-vix'
 
+
+######## qpid
+openstack::qpid::user: 'openstack'
+openstack::qpid::password: 'pose-vix'
+openstack::qpid::hostname: 'vip'
+
 ######## Keystone
 
 openstack::keystone::admin_token: 'sosp-kyl'

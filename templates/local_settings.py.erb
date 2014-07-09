@@ -113,7 +113,7 @@ CACHES = {
     'default': {
         <% if @cache_server_ip %>
         'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': [ <%= cache_server_ip.map{ |ip| "#{ip}:#{@cache_server_port}"}.join(',') %> ],
+        'LOCATION': [ <%= cache_server_ip.map{ |ip| "'#{ip}:#{@cache_server_port}'"}.join(',') %> ],
         <% else %>
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
         <% end %>

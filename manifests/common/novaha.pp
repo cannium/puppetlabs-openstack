@@ -17,7 +17,7 @@ class havana::common::novaha (
   $other_node_address = $::havana::address::other_node_address
   $vip = hiera('openstack::controller::address::virtual')
 
-  address01 = hiera('openstack::controller::address::01')
+  $address01 = hiera('openstack::controller::address::01')
   $address02 = hiera('openstack::controller::address::02')
   $qpid_hosts = ["${address01}:5672", "${address02}:5672"]
 
@@ -37,6 +37,7 @@ class havana::common::novaha (
     qpid_hostname      => hiera('openstack::qpid::hostname')
     qpid_username      => hiera('openstack::qpid::user'),
     qpid_password      => hiera('openstack::qpid::password'),
+    state_path         => hiera('openstack::nova::state_path')
     debug              => hiera('openstack::debug'),
     verbose            => hiera('openstack::verbose'),
   }

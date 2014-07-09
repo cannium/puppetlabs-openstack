@@ -33,11 +33,11 @@ class havana::common::novaha (
     glance_api_servers => "http://${vip}:9292",
     memcached_servers  => $memcached,
     monitoring_notifications => true,
-    rpc_backend        => 'nova.openstack.common.rpc.impl_qpid'
-    qpid_hostname      => hiera('openstack::qpid::hostname')
+    rpc_backend        => 'nova.openstack.common.rpc.impl_qpid',
+    qpid_hostname      => hiera('openstack::qpid::hostname'),
     qpid_username      => hiera('openstack::qpid::user'),
     qpid_password      => hiera('openstack::qpid::password'),
-    state_path         => hiera('openstack::nova::state_path')
+    state_path         => hiera('openstack::nova::state_path'),
     debug              => hiera('openstack::debug'),
     verbose            => hiera('openstack::verbose'),
   }

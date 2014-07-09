@@ -7,9 +7,10 @@ class havana::common::glanceha {
   include havana::address
   $management_address = $::havana::address::controller_management_address
   $registry_address = $::havana::address::storage_management_address
+  $vip = hiera('openstack::controller::address::virtual')
   class { '::glance::api':
     keystone_password => hiera('openstack::glance::password'),
-    auth_host         => $management_address,
+    auth_host         => $vip,
     bind_host         => $management_address,
     keystone_tenant   => 'services',
     keystone_user     => 'glance',

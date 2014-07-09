@@ -34,7 +34,7 @@ class havana::profile::glanceha::api {
   class { '::glance::registry':
     keystone_password => hiera('openstack::glance::password'),
     sql_connection    => $::havana::resources::connectorsha::glance,
-    auth_host         => $::hostname,
+    auth_host         => hiera('openstack::controller::address::virtual'),
     bind_host         => $controller_address,
     keystone_tenant   => 'services',
     keystone_user     => 'glance',
@@ -42,9 +42,9 @@ class havana::profile::glanceha::api {
     debug             => hiera('openstack::debug'),
   }
 
-  class { '::glance::notify::rabbitmq': 
-    rabbit_password => hiera('openstack::rabbitmq::password'),
-    rabbit_userid   => hiera('openstack::rabbitmq::user'),
-    rabbit_host     => $controller_address,
+  class { '::glance::notify::qpid': 
+    qpid_password => hiera('openstack::qpid::password'),
+    qpid_username   => hiera('openstack::qpid::user'),
+    qpid_hostname   => hiera('openstack::qpid::hostname'),
   }
 }

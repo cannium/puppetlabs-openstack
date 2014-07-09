@@ -28,6 +28,12 @@ class havana::common::novaha (
     $memcached = ["${controller_management_address}:11211"]
   }
 
+  if($is_compute) {
+    $nova_state_path = '/var/lib/nova'
+  } else {
+    $nova_state_path = hiera('openstack::nova::state_path')
+  }
+
   class { '::nova':
     sql_connection     => $::havana::resources::connectorsha::nova,
     glance_api_servers => "http://${vip}:9292",
@@ -37,7 +43,7 @@ class havana::common::novaha (
     qpid_hostname      => hiera('openstack::qpid::hostname'),
     qpid_username      => hiera('openstack::qpid::user'),
     qpid_password      => hiera('openstack::qpid::password'),
-    state_path         => hiera('openstack::nova::state_path'),
+    state_path         => $nova_state_path,
     debug              => hiera('openstack::debug'),
     verbose            => hiera('openstack::verbose'),
   }

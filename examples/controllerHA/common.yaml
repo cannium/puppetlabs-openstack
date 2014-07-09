@@ -101,6 +101,7 @@ openstack::swift::hash_suffix: 'pop-bang'
 
 openstack::nova::libvirt_type: 'qemu'
 openstack::nova::password: 'quuk-paj'
+# for controller only:
 openstack::nova::state_path: '/openstack/nova'
 
 ######## Neutron

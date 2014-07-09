@@ -47,7 +47,7 @@ class havana::common::novaha (
     'DEFAULT/my_ip':  value => $controller_management_address;
     'DEFAULT/allow_resize_to_same_host':  value => 'True';
     'DEFAULT/firewall_driver':  value => 'nova.virt.firewall.NoopFirewallDriver';
-    'DEFAULT/multihost':  value => 'True';
+    'DEFAULT/multi_host':  value => 'True';
     'DEFAULT/instance_usage_audit': value => 'True';
     'DEFAULT/instance_usage_audit_period':  value => 'hour';
     'DEFAULT/notify_on_state_change': value => 'vm_and_task_state';

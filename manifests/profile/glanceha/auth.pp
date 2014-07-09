@@ -3,15 +3,13 @@
 class havana::profile::glanceha::auth {
   ::havana::resources::controllerha { 'glance': }
 
-  include havana::address
-  $address = $::havana::address::controller_management_address
+  $vip = hiera('openstack::controlller::address::virtual')
   class  { '::glance::keystone::auth':
     password         => hiera('openstack::glance::password'),
-    public_address   => $address,
-    admin_address    => $address,
-    internal_address => $address,
+    public_address   => $vip,
+    admin_address    => $vip,
+    internal_address => $vip,
     region           => hiera('openstack::region'),
   }
 
-#  include ::havana::common::glanceha
 }

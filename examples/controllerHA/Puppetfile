@@ -10,9 +10,6 @@ mod "swift",
   :git => "git://github.com/stackforge/puppet-swift",
   :ref => "stable/havana"
 
-#mod "glance",
-#  :git => "git://github.com/stackforge/puppet-glance",
-#  :ref => "stable/havana"
 mod "glance",
    :git => "git://github.com/cannium/puppet-glance",
    :ref => "stable/havana"
@@ -26,7 +23,7 @@ mod "neutron",
   :ref => "stable/havana"
 
 mod "nova",
-  :git => "git://github.com/stackforge/puppet-nova",
+  :git => "git://github.com/cannium/puppet-nova",
   :ref => "stable/havana"
 
 mod "heat",

@@ -28,8 +28,10 @@ class havana::common::novaha (
 
   if($is_compute) {
     $nova_state_path = '/var/lib/nova'
+    $myip            = $management_address
   } else {
     $nova_state_path = hiera('openstack::nova::state_path')
+    $myip            = $controller_management_address
   }
 
   class { '::nova':
@@ -48,7 +50,7 @@ class havana::common::novaha (
 
   nova_config { 
     'DEFAULT/default_floating_pool': value => 'public';
-    'DEFAULT/my_ip':  value => $controller_management_address;
+    'DEFAULT/my_ip':  value => $myip;
     'DEFAULT/allow_resize_to_same_host':  value => 'True';
     'DEFAULT/firewall_driver':  value => 'nova.virt.firewall.NoopFirewallDriver';
     'DEFAULT/multi_host':  value => 'True';

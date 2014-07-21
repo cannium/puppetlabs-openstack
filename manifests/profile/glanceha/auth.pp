@@ -3,7 +3,7 @@
 class havana::profile::glanceha::auth {
   ::havana::resources::controllerha { 'glance': }
 
-  $vip = hiera('openstack::controlller::address::virtual')
+  $vip = hiera('openstack::controller::address::virtual')
   class  { '::glance::keystone::auth':
     password         => hiera('openstack::glance::password'),
     public_address   => $vip,

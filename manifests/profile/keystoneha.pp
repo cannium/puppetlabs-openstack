@@ -7,7 +7,7 @@ class havana::profile::keystoneha {
 
   include havana::address
   $address = $::havana::address::controller_management_address
-  $vip = hiera('openstack::controlller::address::virtual')
+  $vip = hiera('openstack::controller::address::virtual')
   class { 'keystone::endpoint':
     public_address   => $vip,
     admin_address    => $vip,

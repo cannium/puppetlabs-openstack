@@ -47,9 +47,10 @@ openstack::rabbitmq::password: 'pose-vix'
 
 
 ######## qpid
-openstack::qpid::user: 'openstack'
-openstack::qpid::password: 'pose-vix'
-openstack::qpid::hostname: 'vip'
+openstack::qpid::user: 'guest'
+openstack::qpid::password: 'guest'
+openstack::qpid::hostname: 'database'
+openstack::qpid::hosts: ['192.168.56.104']
 
 ######## Keystone
 

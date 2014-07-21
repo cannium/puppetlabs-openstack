@@ -1,6 +1,5 @@
 class havana::roleha::controller inherits ::havana::roleha {
   class { '::havana::profile::firewall': }
-  class { '::havana::profile::qpidha': } ->
   class { '::havana::profile::memcacheha': } ->
   class { '::havana::profile::keystoneha': } ->
   class { '::havana::profile::glanceha::api': } ->

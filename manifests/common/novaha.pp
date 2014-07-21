@@ -17,9 +17,7 @@ class havana::common::novaha (
   $other_node_address = $::havana::address::other_node_address
   $vip = hiera('openstack::controller::address::virtual')
 
-  $address01 = hiera('openstack::controller::address::01')
-  $address02 = hiera('openstack::controller::address::02')
-  $qpid_hosts = ["${address01}:5672", "${address02}:5672"]
+  $qpid_hosts = hiera('openstack::qpid::hosts')
 
   if($other_node_address) { # means this is a controller node
     $memcached = ["${controller_management_address}:11211",

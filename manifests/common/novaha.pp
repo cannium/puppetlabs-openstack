@@ -19,12 +19,11 @@ class havana::common::novaha (
 
   $qpid_hosts = hiera('openstack::qpid::hosts')
 
-  if($other_node_address) { # means this is a controller node
-    $memcached = ["${controller_management_address}:11211",
-                  "${other_node_address}:11211"]
-  } else {
-    $memcached = ["${controller_management_address}:11211"]
-  }
+  $controller01 = hiera('openstack::controller::address::01')
+  $controller02 = hiera('openstack::controller::address::02')
+  # memcached address configuration should be consist through the deployment,
+  # see https://code.google.com/p/memcached/wiki/NewConfiguringClient#Configuring_Servers_Consistently for details
+  $cache_address = ["${controller01}:11211", "${controller02}:11211"]
 
   if($is_compute) {
     $nova_state_path = '/var/lib/nova'
@@ -37,7 +36,7 @@ class havana::common::novaha (
   class { '::nova':
     sql_connection     => $::havana::resources::connectorsha::nova,
     glance_api_servers => "http://${vip}:9292",
-    memcached_servers  => $memcached,
+    memcached_servers  => $cache_address,
     monitoring_notifications => true,
     rpc_backend        => 'nova.openstack.common.rpc.impl_qpid',
     qpid_hostname      => hiera('openstack::qpid::hostname'),

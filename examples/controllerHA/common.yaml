@@ -4,9 +4,12 @@ openstack::region: 'openstack'
 openstack::controller::address::virtual: '192.168.56.110'
 openstack::controller::address::01: '192.168.56.102'
 openstack::controller::address::02: '192.168.56.103'
+openstack::controller::hostname::01: 'controller01'
+openstack::controller::hostname::02: 'controller02'
 openstack::storage::address::01: '192.168.56.102'
 openstack::storage::address::02: '192.168.56.103'
 
+######## Keepalived
 keepalived::vrrp::interface: 'eth1'
 
 ######## Networks
@@ -70,6 +73,9 @@ openstack::glance::image_cache_dir: '/openstack/glance/image-cache'
 
 openstack::nova::libvirt_type: 'qemu'
 openstack::nova::password: 'quuk-paj'
+openstack::nova::network::fixed_range: '10.1.1.0/24'
+openstack::nova::network::private_interface: 'eth1'
+openstack::nova::network::public_interface: 'eth0'
 # for controller only:
 openstack::nova::state_path: '/openstack/nova'
 

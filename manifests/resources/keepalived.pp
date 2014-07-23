@@ -6,7 +6,7 @@ class havana::resources::keepalived{
     weight      => '10',
   }
 
-  if ($::hostname == 'controller01') {
+  if ($::hostname == hiera('openstack::controller::hostname::01')) {
         $instance_state = 'MASTER'
         $priority_value = 112
     } else {

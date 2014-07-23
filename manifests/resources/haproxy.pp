@@ -97,82 +97,84 @@ class havana::resources::haproxy{
       }
   }
 # backends
-  $controller01 = hiera('openstack::controller::address::01')
-  $controller02 = hiera('openstack::controller::address::02')
+  $hostname01 = hiera('openstack::controller::hostname::01')
+  $hostname02 = hiera('openstack::controller::hostname::02')
+  $address01 = hiera('openstack::controller::address::01')
+  $address02 = hiera('openstack::controller::address::02')
   haproxy::backend {'horizon-http-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:80 check inter 10s",
-                        "controller02 ${controller02}:80 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:80 check inter 10s",
+                        "${hostname02} ${address02}:80 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'keystone-admin-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:35357 check inter 10s",
-                        "controller02 ${controller02}:35357 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:35357 check inter 10s",
+                        "${hostname02} ${address02}:35357 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'keystone-public-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:5000 check inter 10s",
-                        "controller02 ${controller02}:5000 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:5000 check inter 10s",
+                        "${hostname02} ${address02}:5000 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'neutron-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:9696 check inter 10s",
-                        "controller02 ${controller02}:9696 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:9696 check inter 10s",
+                        "${hostname02} ${address02}:9696 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'glance-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:9191 check inter 10s",
-                        "controller02 ${controller02}:9191 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:9191 check inter 10s",
+                        "${hostname02} ${address02}:9191 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'glance-registry-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:9292 check inter 10s",
-                        "controller02 ${controller02}:9292 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:9292 check inter 10s",
+                        "${hostname02} ${address02}:9292 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'nova-ec2-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:8773 check inter 10s",
-                        "controller02 ${controller02}:8773 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:8773 check inter 10s",
+                        "${hostname02} ${address02}:8773 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'nova-novnc-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:6080 check inter 10s",
-                        "controller02 ${controller02}:6080 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:6080 check inter 10s",
+                        "${hostname02} ${address02}:6080 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'nova-compute-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:8774 check inter 10s",
-                        "controller02 ${controller02}:8774 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:8774 check inter 10s",
+                        "${hostname02} ${address02}:8774 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'nova-metadata-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:8775 check inter 10s",
-                        "controller02 ${controller02}:8775 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:8775 check inter 10s",
+                        "${hostname02} ${address02}:8775 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }
   haproxy::backend {'cinder-api':
       options   => {
-          'server'  => ["controller01 ${controller01}:8776 check inter 10s",
-                        "controller02 ${controller02}:8776 check inter 10s"],
+          'server'  => ["${hostname01} ${address01}:8776 check inter 10s",
+                        "${hostname02} ${address02}:8776 check inter 10s"],
           'balance' => 'roundrobin',
       }
   }

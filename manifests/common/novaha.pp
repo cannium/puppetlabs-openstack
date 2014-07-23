@@ -82,7 +82,6 @@ class havana::common::novaha (
     enabled => $is_controller,
   }
 
-  # TODO: it's important to set up the vnc properly
   class { '::nova::compute':
     enabled                       => $is_compute,
     vnc_enabled                   => true,
@@ -91,9 +90,9 @@ class havana::common::novaha (
   }
 
   class { '::nova::network':
-    fixed_range             => '10.1.1.0/24',
-    private_interface       => 'eth1',
-    public_interface        => 'eth0',
+    fixed_range             => hiera('openstack::nova::network::fixed_range'),
+    private_interface       => hiera('openstack::nova::network::private_interface'),
+    public_interface        => hiera('openstack::nova::network::public_interface'),
     enabled                 => true,
     network_manager         => 'nova.network.manager.FlatDHCPManager',
   }

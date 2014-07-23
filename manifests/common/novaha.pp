@@ -59,6 +59,11 @@ class havana::common::novaha (
     'DEFAULT/qpid_hosts': value => join($qpid_hosts, ',');
   }
 
+  $backdoor_port = hiera('openstack::nova::eventlet_backdoor_port')
+  if($backdoor_port) {
+      nova_config { 'DEFAULT/backdoor_port': value => $backdoor_port }
+  }
+
   class { '::nova::api':
     admin_password                       => hiera('openstack::nova::password'),
     api_bind_address                     => $controller_management_address,

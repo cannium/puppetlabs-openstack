@@ -8,7 +8,7 @@ class havana::resources::keepalived{
 
   if ($::hostname == hiera('openstack::controller::hostname::01')) {
         $instance_state = 'MASTER'
-        $priority_value = 112
+        $priority_value = 105
     } else {
         $instance_state = 'BACKUP'
         $priority_value = 101

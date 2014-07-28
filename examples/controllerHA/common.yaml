@@ -10,7 +10,7 @@ openstack::storage::address::01: '192.168.56.102'
 openstack::storage::address::02: '192.168.56.103'
 
 ######## Keepalived
-keepalived::vrrp::interface: 'eth1'
+keepalived::vrrp::interface: 'eth0'
 
 ######## Networks
 openstack::network::api: '192.168.56.0/24'

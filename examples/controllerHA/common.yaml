@@ -79,7 +79,7 @@ openstack::nova::password: 'quuk-paj'
 openstack::nova::network::fixed_range: '10.1.1.0/24'
 openstack::nova::network::private_interface: 'eth1'
 openstack::nova::network::public_interface: 'eth0'
-openstack::nova::eventlet_backdoor_port: '16007'
+openstack::nova::eventlet_backdoor_port: '0'
 # for controller only:
 openstack::nova::state_path: '/openstack/nova'
 

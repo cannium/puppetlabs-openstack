@@ -43,6 +43,7 @@ class havana::common::novaha (
     qpid_username      => hiera('openstack::qpid::user'),
     qpid_password      => hiera('openstack::qpid::password'),
     state_path         => $nova_state_path,
+    nova_shell         => "/bin/bash"
     debug              => hiera('openstack::debug'),
     verbose            => hiera('openstack::verbose'),
   }

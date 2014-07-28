@@ -3,6 +3,13 @@ class havana::resources::migrationkey(
 )
 {
     include ssh::server::service
+    
+    exec{ "close selinux":
+        # if selinux is on, the ssh public key authentication would be failed
+        command => "/usr/sbin/setenforce 0",
+        user    => "root",
+    }
+
     file{ "${nova_home}/.ssh":
         ensure  => "directory",
         owner   => "nova",

@@ -15,7 +15,7 @@ class havana::common::glanceha {
     keystone_tenant   => 'services',
     keystone_user     => 'glance',
     sql_connection    => $::havana::resources::connectorsha::glance,
-    registry_host     => $registry_address,
+    registry_host     => $vip,
     verbose           => hiera('openstack::verbose'),
     debug             => hiera('openstack::debug'),
     enabled           => true,

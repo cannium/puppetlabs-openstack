@@ -116,8 +116,8 @@ mod "mongodb",
   :ref => "0.7.0"
 
 mod "ntp",
-  :git => "git://github.com/puppetlabs/puppetlabs-ntp",
-  :ref => "3.0.x"
+  :git => "git://github.com/cannium/puppetlabs-ntp",
+  :ref => "master"
 
 mod "postgresql",
   :git => "git://github.com/puppetlabs/puppetlabs-postgresql",

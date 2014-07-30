@@ -8,8 +8,7 @@ class havana::common::novaha (
         $is_controller = true,
   ) {
 
-  $management_network = hiera('openstack::network::management')
-  $management_address = ip_for_network($management_network)
+  $management_address = ip_from_hosts()
 
   include havana::address
   $storage_management_address = $::havana::address::storage_management_address

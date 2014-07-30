@@ -13,7 +13,7 @@ openstack::storage::address::02: '192.168.56.103'
 keepalived::vrrp::interface: 'eth0'
 
 ######## HAproxy
-haproxy::timeout: '10s'
+haproxy::timeout: '7s'
 
 ######## Networks
 openstack::network::api: '192.168.56.0/24'

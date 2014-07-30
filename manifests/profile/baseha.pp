@@ -5,6 +5,11 @@ class havana::profile::baseha {
       servers   => hiera('ntp::servers'),
   }
 
+  service{ 'NetworkManager':
+      ensure   => "stopped",
+      enabled  => false,
+  }
+
   # all nodes need the OpenStack repository
   class { '::havana::resources::repo': }
 

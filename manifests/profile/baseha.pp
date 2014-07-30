@@ -1,7 +1,9 @@
 # The base profile for OpenStack. Installs the repository and ntp
 class havana::profile::baseha {
   # everyone also needs to be on the same clock
-  class { '::ntp': }
+  class { '::ntp': 
+      servers   => hiera('ntp::servers'),
+  }
 
   # all nodes need the OpenStack repository
   class { '::havana::resources::repo': }

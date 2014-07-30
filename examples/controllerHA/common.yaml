@@ -15,6 +15,9 @@ keepalived::vrrp::interface: 'eth0'
 ######## HAproxy
 haproxy::timeout: '7s'
 
+######## NTP
+ntp::servers: ['115.182.93.63']
+
 ######## Networks
 openstack::network::api: '192.168.56.0/24'
 openstack::network::external: '192.168.56.0/24'
